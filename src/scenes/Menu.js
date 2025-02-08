@@ -27,6 +27,14 @@ class Menu extends Phaser.Scene {
         this.load.image('astroid7', './assets/astroid7.png')
         this.load.image('astroid8', './assets/astroid8.png')
 
+        this.load.audio('explosion0', './assets/explosionCrunch_000.ogg')
+        this.load.audio('explosion1', './assets/explosionCrunch_001.ogg')
+        this.load.audio('explosion2', './assets/explosionCrunch_002.ogg')
+        this.load.audio('explosion3', './assets/explosionCrunch_003.ogg')
+
+        this.load.audio('laser', './assets/laserSmall_001.ogg')
+
+
     }
     create() {
         this.add.text(20, 20, "Rocket Patrol Menu")

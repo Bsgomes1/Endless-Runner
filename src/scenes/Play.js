@@ -1,172 +1,3 @@
-// class Play extends Phaser.Scene {
-//     constructor() {
-//         super("playScene")
-//     }
-//     create() {
-//         // Display starfield
-//         this.starfield = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'starfield').setOrigin(0, 0)
-    
-//         // Green rectangle (UI border)
-//         this.add.rectangle(0, 0, game.config.width, borderUISize, 0x00FF00).setOrigin(0, 0)
-        
-//         // Fix: Use game.config.width & game.config.height instead of undefined width & height
-//         this.player = this.physics.add.sprite(game.config.width / 2, game.config.height / 2, 'character', 1).setScale(2)
-//         this.player.body.setCollideWorldBounds(true)
-//         this.player.body.setSize(32, 32).setOffset(8, 16)
-
-//         // Keyboard input
-//         this.cursors = this.input.keyboard.addKeys({
-//             up: Phaser.Input.Keyboard.KeyCodes.W,
-//             down: Phaser.Input.Keyboard.KeyCodes.S,
-//             left: Phaser.Input.Keyboard.KeyCodes.A,
-//             right: Phaser.Input.Keyboard.KeyCodes.D
-//         })
-
-//         this.asteroids = this.physics.add.group()
-//         this.time.addEvent({ delay: 1000, callback: this.spawnAsteroid, callbackScope: this, loop: true })
-
-
-//     }
-
-//     update() {
-//         // move starfield
-//         this.starfield.tilePositionY -= 4
-
-//         // Player movement
-//         if (this.cursors.left.isDown) {
-//             this.player.x -= 5
-//         } else if (this.cursors.right.isDown) {
-//             this.player.x += 5
-//         }
-
-//         if (this.cursors.up.isDown) {
-//             this.player.y -= 5
-//         } else if (this.cursors.down.isDown) {
-//             this.player.y += 5
-//         }
-
-//         this.asteroids.children.iterate((asteroid) => {
-//             asteroid.update()
-//         })
-        
-
-//     }
-
-//     spawnAsteroid() {
-//         let x = Phaser.Math.Between(50, game.config.width - 50)
-//         let textureKey = 'astroid' + Phaser.Math.Between(1, 8) // Random texture
-    
-//         // Create the asteroid
-//         let asteroid = new Asteroid(this, x, 0, textureKey)
-    
-//         // Enable physics after creation (if not already done)
-//         this.physics.world.enable(asteroid)
-    
-//         // Apply velocity to the asteroid after physics is enabled
-//         asteroid.setInitialVelocity()
-    
-//         // Add asteroid to the physics group
-//         this.asteroids.add(asteroid)
-//     }
-    
-// }
-
-
-// class Play extends Phaser.Scene {
-//     constructor() {
-//         super("playScene")
-//     }
-//     create() {
-//         // Display starfield
-//         this.starfield = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'starfield').setOrigin(0, 0)
-    
-//         // Green rectangle (UI border)
-//         //this.add.rectangle(0, 0, game.config.width, borderUISize, 0x00FF00).setOrigin(0, 0)
-        
-//         // Fix: Use game.config.width & game.config.height instead of undefined width & height
-//         this.player = this.physics.add.sprite(game.config.width / 2, game.config.height / 2, 'character', 1)
-//         .setOrigin(0.5, 0.5)  // Ensure sprite is centered properly
-    
-//         this.player.body.setSize(100, 100).setOffset(0, 0)  // Adjust hitbox to match sprite
-//         this.player.body.setCollideWorldBounds(true)
-        
-
-
-        
-
-
-//         // Keyboard input
-//         this.cursors = this.input.keyboard.addKeys({
-//             up: Phaser.Input.Keyboard.KeyCodes.W,
-//             down: Phaser.Input.Keyboard.KeyCodes.S,
-//             left: Phaser.Input.Keyboard.KeyCodes.A,
-//             right: Phaser.Input.Keyboard.KeyCodes.D
-//         })
-
-//         this.asteroids = this.physics.add.group()
-//         this.spawnAsteroid()
-//         this.time.addEvent({ delay: 1000, callback: this.spawnAsteroid, callbackScope: this, loop: true })
-        
-//         this.input.on('pointerdown', this.shootAsteroid, this)
-
-//     }
-
-//     update() {
-//         let moving = false
-
-//         // move starfield
-//         this.starfield.tilePositionY -= 4;
-
-//         this.player.play('player_anim', true);
-    
-//         // Player movement
-//         if (this.cursors.left.isDown) {
-//             this.player.x -= 5
-//             moving = true
-//         } else if (this.cursors.right.isDown) {
-//             this.player.x += 5
-//             moving = true
-//         }
-    
-//         if (this.cursors.up.isDown) {
-//             this.player.y -= 5;
-//         } else if (this.cursors.down.isDown) {
-//             this.player.y += 5;
-//         }
-
-
-//         // Iterate through asteroids
-//         this.asteroids.children.iterate((asteroid) => {
-//             // Ensure asteroid exists
-//             if (asteroid) {
-//                 if (asteroid.y > game.config.height) {
-//                     asteroid.destroy();
-//                 }
-//             }
-//         });
-//     }
-    
-
-//     spawnAsteroid() {
-//         let x = Phaser.Math.Between(50, game.config.width - 50)
-//         let asteroid = this.asteroids.create(x, 0, 'astroid' + Phaser.Math.Between(1, 8))
-//         asteroid.setVelocityY(Phaser.Math.Between(150, 300))
-//         asteroid.setScale(Phaser.Math.FloatBetween(0.5, 1.5))
-//     }
-    
-//     shootAsteroid(pointer) {
-//         this.asteroids.children.iterate((asteroid) => {
-//             // Check if asteroid is valid and exists
-//             if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(asteroid.getBounds(), new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1))) {
-//                 asteroid.destroy()
-//             }
-//         })
-//     }
-    
-    
-// }
-
-
 class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
@@ -177,7 +8,7 @@ class Play extends Phaser.Scene {
         this.starfield = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'starfield').setOrigin(0, 0);
 
         // Create player sprite
-        this.player = this.physics.add.sprite(game.config.width / 2, game.config.height / 2, 'character', 1).setOrigin(0.5, 0.5).setScale(0.05);
+        this.player = this.physics.add.sprite(game.config.width / 2, (game.config.height / 2) + 300, 'character', 1).setOrigin(0.5, 0.5).setScale(0.05);
     
         this.player.body.setSize(800, 800).setOffset(0, 0); // Adjust hitbox
         this.player.body.setCollideWorldBounds(true); // Prevent player from moving off-screen
@@ -215,12 +46,30 @@ class Play extends Phaser.Scene {
 
         this.asteroids = this.physics.add.group();
         this.spawnAsteroid();
-        this.time.addEvent({ delay: 1000, callback: this.spawnAsteroid, callbackScope: this, loop: true });
-        
+        this.asteroidSpawnEvent = this.time.addEvent({
+            delay: 500,
+            callback: this.spawnAsteroid,
+            callbackScope: this,
+            loop: true
+        });
+            
         this.input.on('pointerdown', this.shootAsteroid, this);
         //console.log(this.anims)
         this.player.play('fly')
         //console.log(this.anims.getTotalFrames)
+
+        // Add collision detection between player and asteroids
+        this.physics.add.collider(this.player, this.asteroids, this.gameOver, null, this);
+
+        this.timeAlive = 0; // Start the timer
+        this.timeAliveText = this.add.text(20, 20, 'Time: 0s', {
+            fontSize: '24px',
+            color: '#fff'
+        });
+
+        this.gameOverFlag = false; // Track if the game is over
+
+    
     }
 
     update() {
@@ -268,20 +117,101 @@ class Play extends Phaser.Scene {
                 asteroid.destroy();
             }
         });
+
+        if (!this.gameOverFlag) {
+            this.timeAlive += this.game.loop.delta / 1000; // Convert milliseconds to seconds
+            this.timeAliveText.setText(`Time: ${this.timeAlive.toFixed(1)}s`);
+        }
+        
     }
 
+    // spawnAsteroid() {
+    //     let x = Phaser.Math.Between(50, game.config.width - 50);
+    //     let asteroid = this.asteroids.create(x, 0, 'astroid' + Phaser.Math.Between(1, 8));
+    //     asteroid.setVelocityY(Phaser.Math.Between(300, 700));
+    //     asteroid.setScale(Phaser.Math.FloatBetween(0.5, 1.5));
+    // }
+    
     spawnAsteroid() {
         let x = Phaser.Math.Between(50, game.config.width - 50);
-        let asteroid = this.asteroids.create(x, 0, 'astroid' + Phaser.Math.Between(1, 8));
-        asteroid.setVelocityY(Phaser.Math.Between(150, 300));
+        let asteroidType = Phaser.Math.Between(1, 8);
+        let asteroid = this.asteroids.create(x, 0, `astroid${asteroidType}`);
+    
+        asteroid.setVelocityY(Phaser.Math.Between(100, 700));
         asteroid.setScale(Phaser.Math.FloatBetween(0.5, 1.5));
+    
+        // Adjust hitboxes based on asteroid type
+        switch (asteroidType) {
+            case 1:
+                asteroid.body.setSize(60, 60)
+                break;
+            case 2:
+                asteroid.body.setSize(80, 80).setOffset(5, 5);
+                break;
+            // case 3:
+            //     asteroid.body.setSize(45, 45).setOffset(8, 8);
+            //     break;
+            case 4:
+                asteroid.body.setSize(40, 40).setOffset(20, 25)
+                break;
+            case 5:
+                asteroid.body.setSize(40, 40)
+                break;
+            case 6:
+                asteroid.body.setSize(70, 70)
+                break;
+            case 7:
+                asteroid.body.setSize(40, 70).setOffset(20, 25)
+                break;
+            case 8:
+                asteroid.body.setSize(65, 40).setOffset(25, 20)
+                break;
+        }
     }
     
+
+
+
     shootAsteroid(pointer) {
         this.asteroids.children.iterate((asteroid) => {
+            this.sound.play('laser')
             if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(asteroid.getBounds(), new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1))) {
                 asteroid.destroy();
+                this.randomNum = Math.floor(Math.random() * 3)
+                if (this.randomNum == 0) {
+                    this.sound.play('explosion0')
+                }
+                if (this.randomNum == 1) {
+                    this.sound.play('explosion1')
+                }
+                if (this.randomNum == 2) {
+                    this.sound.play('explosion2')
+                }
+                if (this.randomNum == 3) {
+                    this.sound.play('explosion3')
+                }
             }
         });
     }
+
+    gameOver() {
+        this.physics.pause(); // Stop physics
+        this.player.setTint(0xff0000); // Change player color to red
+        this.gameOverFlag = true; // Prevent timer from updating
+
+        this.asteroidSpawnEvent.remove(); // Stop asteroid spawning
+
+        this.add.text(game.config.width / 2, game.config.height / 2, 'GAME OVER', {
+            fontSize: '48px',
+            color: '#ff0000'
+        }).setOrigin(0.5);
+
+        // Display final time below "Game Over" text
+        this.add.text(game.config.width / 2, game.config.height / 2 + 50, `Final Time: ${this.timeAlive.toFixed(1)}s`, {
+            fontSize: '32px',
+            color: '#ffffff'
+        }).setOrigin(0.5);
+    }
+
+
 }
