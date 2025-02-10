@@ -37,27 +37,62 @@ class Menu extends Phaser.Scene {
 
     }
     create() {
-        this.add.text(20, 20, "Rocket Patrol Menu")
+        let menuConfig = {
+            fontFamily: 'Ink Free',
+            fontSize: '50px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+            top: 30,
+            bottom: 30,
+            },
+            fixedWidth: 0
+        }
+
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 90, 'Astroid Shooter', menuConfig).setOrigin(0.5)
+        
+        
+        let secondConfig = {
+            fontFamily: 'Ink Free',
+            fontSize: '50px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+            top: 5,
+            bottom: 5,
+            },
+            fixedWidth: 0
+        }
+        
+        secondConfig.backgroundColor = '#0000FF'
+        secondConfig.color = '#FFF'
+        secondConfig.fontSize = '28px'
+        this.add.text(game.config.width/2, game.config.height/2, 'use WASD to move', secondConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/2 + 40, 'left click on asteroids to destroy asteroids', secondConfig).setOrigin(0.5)
+
+        secondConfig.backgroundColor = '#00FF99'
+        secondConfig.color = '#000'
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 10, 'Spacebar to start', secondConfig).setOrigin(0.5)
+        secondConfig.backgroundColor = '#FF0099'
+
+  
+        secondConfig.backgroundColor = '#FF0099';
+        secondConfig.color = '#FFF';
+        this.add.text(game.config.width / 2, game.config.height / 2 + 130, 'Press C for credits', secondConfig).setOrigin(0.5);
+
+  
+
     }
 
     update() {
-        // this.anims.create({
-        //     key: 'player_anim', // Name the animation
-        //     frameRate: 5,       // Correct property name
-        //     repeat: -1,         // Loop animation
-        //     frames: this.anims.generateFrameNumbers('character', { 
-        //         start: 0, 
-        //         end: 2,
-        //         first: 0 
-        //     })
-        // })
+        this.input.keyboard.once('keydown-SPACE', () => {
+            this.scene.start('playScene')
+        })
 
-
-            this.time.delayedCall(500, () => {
-                this.scene.start('playScene');
-            });
-
-        
-        this.scene.start('playScene')
+        this.input.keyboard.on('keydown-C', () => {
+            this.scene.start('creditsScene')
+        })
     }
 }

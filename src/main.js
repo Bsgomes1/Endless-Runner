@@ -1,17 +1,17 @@
 let config = {
     type: Phaser.AUTO,
     width: 640,
-    height: 1000,
+    height: 900,
     render: {
       pixelArt: true
     },
     physics: {
       default: 'arcade',
       arcade: {
-        debug: true,
+        debug: false,
       }
     },
-    scene: [ Menu, Play ]
+    scene: [ Menu, Play, Credits ]
   }
 
 let game = new Phaser.Game(config)
