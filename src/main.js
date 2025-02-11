@@ -1,3 +1,11 @@
+// Name: Ben Gomes
+// Title: Endless runner/ Asteroid Shooter
+// Time: 30ish hours
+
+// Sources: ChatGPT for when I was stuck, 
+// kenney.nl for sounds, 
+
+
 let config = {
     type: Phaser.AUTO,
     width: 640,
