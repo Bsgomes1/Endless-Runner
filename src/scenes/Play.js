@@ -4,7 +4,6 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        
         // Display starfield
         this.starfield = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'starfield').setOrigin(0, 0)
 
@@ -175,7 +174,7 @@ class Play extends Phaser.Scene {
 
     shootAsteroid(pointer) {
         this.asteroids.children.iterate((asteroid) => {
-            this.sound.volume = 0.01
+            this.sound.volume = 0.5
             this.sound.play('laser')
             if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(asteroid.getBounds(), new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1))) {
                 asteroid.destroy()
