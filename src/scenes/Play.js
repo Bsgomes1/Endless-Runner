@@ -177,35 +177,28 @@ class Play extends Phaser.Scene {
 
 
     shootAsteroid(pointer) {
-        this.sound.play('laser', { volume: 0.01 }) // play once
+        this.sound.play('laser', { volume: 0.5 }) // play once
     
         this.asteroids.children.iterate((asteroid) => {
-<<<<<<< HEAD
             if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(
                 asteroid.getBounds(),
                 new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1)
             )) {
-=======
-            this.sound.volume = 0.3
-            this.sound.play('laser')
-            this.sound.volume = 1
-            if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(asteroid.getBounds(), new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1))) {
->>>>>>> parent of 250eecb (Simplify sound volume handling in shootAsteroid)
                 asteroid.destroy()
     
                 this.randomNum = Math.floor(Math.random() * 3)
     
                 if (this.randomNum == 0) {
-                    this.sound.play('explosion0', { volume: 0.3 })
+                    this.sound.play('explosion0', { volume: 0.5 })
                 }
                 if (this.randomNum == 1) {
-                    this.sound.play('explosion1', { volume: 0.3 })
+                    this.sound.play('explosion1', { volume: 0.5 })
                 }
                 if (this.randomNum == 2) {
-                    this.sound.play('explosion2', { volume: 0.3 })
+                    this.sound.play('explosion2', { volume: 0.5 })
                 }
                 if (this.randomNum == 3) {
-                    this.sound.play('explosion3', { volume: 0.3 })
+                    this.sound.play('explosion3', { volume: 0.5 })
                 }
             }
         })
