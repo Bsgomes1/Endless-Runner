@@ -175,7 +175,7 @@ class Play extends Phaser.Scene {
 
 
     shootAsteroid(pointer) {
-        this.sound.play('laser', { volume: 0.05 }) // play once
+        this.sound.play('laser', { volume: 0.5 }) // play once
     
         this.asteroids.children.iterate((asteroid) => {
             if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(
