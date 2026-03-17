@@ -4,10 +4,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        this.sound.volume = 0.01
-        this.sound.setVolume(0.01)
-        this.sound.setVolume(0.1)
-        this.sound.setVolume(0.01)
+        
         // Display starfield
         this.starfield = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'starfield').setOrigin(0, 0)
 
@@ -177,28 +174,23 @@ class Play extends Phaser.Scene {
 
 
     shootAsteroid(pointer) {
-        this.sound.play('laser', { volume: 0.5 }) // play once
-    
         this.asteroids.children.iterate((asteroid) => {
-            if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(
-                asteroid.getBounds(),
-                new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1)
-            )) {
+            this.sound.volume = 0.01
+            this.sound.play('laser')
+            if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(asteroid.getBounds(), new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1))) {
                 asteroid.destroy()
-    
                 this.randomNum = Math.floor(Math.random() * 3)
-    
                 if (this.randomNum == 0) {
-                    this.sound.play('explosion0', { volume: 0.5 })
+                    this.sound.play('explosion0')
                 }
                 if (this.randomNum == 1) {
-                    this.sound.play('explosion1', { volume: 0.5 })
+                    this.sound.play('explosion1')
                 }
                 if (this.randomNum == 2) {
-                    this.sound.play('explosion2', { volume: 0.5 })
+                    this.sound.play('explosion2')
                 }
                 if (this.randomNum == 3) {
-                    this.sound.play('explosion3', { volume: 0.5 })
+                    this.sound.play('explosion3')
                 }
             }
         })
