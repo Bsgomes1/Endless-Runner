@@ -176,7 +176,6 @@ class Play extends Phaser.Scene {
         this.asteroids.children.iterate((asteroid) => {
             this.sound.volume = 0.3
             this.sound.play('laser')
-            this.sound.volume = 1
             if (asteroid && Phaser.Geom.Intersects.RectangleToRectangle(asteroid.getBounds(), new Phaser.Geom.Rectangle(pointer.x, pointer.y, 1, 1))) {
                 asteroid.destroy()
                 this.randomNum = Math.floor(Math.random() * 3)
