@@ -4,7 +4,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        this.sound.setVolume(0.01)
+
         // Display starfield
         this.starfield = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'starfield').setOrigin(0, 0)
 
@@ -174,6 +174,7 @@ class Play extends Phaser.Scene {
 
 
     shootAsteroid(pointer) {
+        this.sound.setVolume(0.5)
         this.asteroids.children.iterate((asteroid) => {
             // this.sound.volume = 0.5
             this.sound.play('laser')
